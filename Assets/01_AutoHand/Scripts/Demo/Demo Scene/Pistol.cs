@@ -45,7 +45,7 @@ namespace Autohand.Demo
                 // 해당 코드에서 DeadCounter를 ++로 더하는 형태
                 if (hit.collider.gameObject.CompareTag("ENEMY"))
                 {
-                    enemy.GetComponent<NavEnemyAI>().DeadCounter();
+                    enemy.GetComponent<NavEnemyAI>().Dead();
                 }
 
                 var hitBody = hit.transform.GetComponent<Rigidbody>();

@@ -65,19 +65,13 @@ public class NavEnemyAI : MonoBehaviour
         {
             index = 0;
         }
-
-        // deadCounter 3인 경우, 적 사망 로직
-        if (deadCounter == 3)
-        {
-            aiAgent.isStopped = true;
-            aiAgent.velocity = Vector3.zero;
-            animator.SetInteger(hashDieIndex, Random.Range(0, 3));
-            GetComponent<CapsuleCollider>().enabled = false;
-        }
     }
 
-    public void DeadCounter()
+    public void Dead()
     {
-        deadCounter++;
+        aiAgent.isStopped = true;
+        aiAgent.velocity = Vector3.zero;
+        animator.SetInteger(hashDieIndex, Random.Range(0, 3));
+        GetComponent<CapsuleCollider>().enabled = false;
     }
 }
