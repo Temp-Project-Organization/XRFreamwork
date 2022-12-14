@@ -19,7 +19,6 @@ public class NavEnemyAI : MonoBehaviour
     private Animator     animator;
     private NavMeshAgent aiAgent;
     public GameObject    pistol;
-    private WaitForSeconds wfs;
 
     private int          index;
     private int          deadCount;
@@ -39,14 +38,13 @@ public class NavEnemyAI : MonoBehaviour
 
     private void Start()
     {
-        GameObject spawnGroup = GameObject.Find("Waypoint_Groups");
-        wfs = new WaitForSeconds(0.3f);
+        GameObject wayPointGroups = GameObject.Find("Waypoint_Groups");
 
-        if (spawnGroup != null)
+        if (wayPointGroups != null)
         {
             // wayPointGroup의 하위에 있는 모든 Transform Component를 추출한 뒤,
             // List type의 wayPoints array에 추가
-            spawnGroup.GetComponentsInChildren<Transform>(wayPoints);
+            wayPointGroups.GetComponentsInChildren<Transform>(wayPoints);
 
             wayPoints.RemoveAt(0);
         }
@@ -77,17 +75,10 @@ public class NavEnemyAI : MonoBehaviour
 
         if (deadCount == deadState)
         {
-            StartCoroutine(Action());
+            aiAgent.isStopped = true;
+            aiAgent.velocity = Vector3.zero;
+            animator.SetInteger(hashDieIndex, Random.Range(0, 3));
+            GetComponent<CapsuleCollider>().enabled = false;
         }
-    }
-
-    private IEnumerator Action()
-    {
-        yield return wfs;
-
-        aiAgent.isStopped = true;
-        aiAgent.velocity = Vector3.zero;
-        animator.SetInteger(hashDieIndex, Random.Range(0, 3));
-        GetComponent<CapsuleCollider>().enabled = false;
     }
 }
