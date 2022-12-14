@@ -45,7 +45,7 @@ namespace Autohand.Demo
                 // 해당 코드에서 hitTarget을 True로 바꿔주는 것
                 if (hit.collider.gameObject.CompareTag("ENEMY"))
                 {
-                    enemy.GetComponent<NavEnemyAI>().SetDeadCounter(1);
+                    enemy.GetComponent<NavEnemyAI>().DeadCounter();
                 }
             }
             else

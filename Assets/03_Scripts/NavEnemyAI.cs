@@ -75,8 +75,8 @@ public class NavEnemyAI : MonoBehaviour
         }
     }
 
-    public void SetDeadCounter(int value)
+    public void DeadCounter()
     {
-        deadCounter -= value;
+        deadCounter--;
     }
 }
