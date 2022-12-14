@@ -18,7 +18,7 @@ public class NavEnemyAI : MonoBehaviour
     private Transform    enemyTransform;
     private Animator     animator;
     private NavMeshAgent aiAgent;
-    public GameObject    pistol;
+    public Pistol pistol;
 
     private int          index;
     private int          deadCount;
@@ -38,6 +38,8 @@ public class NavEnemyAI : MonoBehaviour
 
     private void Start()
     {
+        pistol = GameObject.Find("pistol").GetComponent<Pistol>();
+
         GameObject wayPointGroups = GameObject.Find("Waypoint_Groups");
 
         if (wayPointGroups != null)
@@ -61,13 +63,12 @@ public class NavEnemyAI : MonoBehaviour
         {
             index = Random.Range(0, wayPoints.Count);
         }
-
-        if (index > wayPoints.Count)
+        else if (index > wayPoints.Count)
         {
             index = 0;
         }
 
-        if (pistol.GetComponent<Pistol>().GetHitCounter() == deadState)
+        if (pistol.GetHitCounter() == 3)
         {
             aiAgent.isStopped = true;
             aiAgent.velocity = Vector3.zero;

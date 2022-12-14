@@ -20,8 +20,6 @@ namespace Autohand.Demo
 
         private void Start()
         {
-            hitTarget = false;
-
             if (body == null && GetComponent<Rigidbody>() != null)
             {
                 body = GetComponent<Rigidbody>();
