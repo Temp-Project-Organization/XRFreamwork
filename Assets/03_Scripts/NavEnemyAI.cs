@@ -13,7 +13,7 @@ public class NavEnemyAI : MonoBehaviour
     [SerializeField][Range(0, 100)] private float           patrolSpeed = 0.0f;    // 배회 속도
  // [SerializeField][Range(0, 100)] private float           runSpeed    = 0.0f;    // 달리기 속도
  // [SerializeField][Range(0, 100)] private float           damping     = 1.0f;    // 보정값
-    [SerializeField] private int deadCounter = 3;
+    [SerializeField] public int deadCounter = 0;
 
     private Transform    enemyTransform;
     private Animator     animator;
@@ -66,7 +66,8 @@ public class NavEnemyAI : MonoBehaviour
             index = 0;
         }
 
-        if (deadCounter == 0)
+        // deadCounter 3인 경우, 적 사망 로직
+        if (deadCounter == 3)
         {
             aiAgent.isStopped = true;
             aiAgent.velocity = Vector3.zero;
@@ -77,6 +78,6 @@ public class NavEnemyAI : MonoBehaviour
 
     public void DeadCounter()
     {
-        deadCounter--;
+        deadCounter++;
     }
 }
