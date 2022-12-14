@@ -6,23 +6,23 @@ public class Count : MonoBehaviour
 {
     int count;
     private Animator animator;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void Awake()
     {
         count = 0;
         animator = GetComponent<Animator>();
     }
-    void Counting()
+
+    private void Start()
+    {
+        
+    }
+
+
+    private void Update()
+    {
+
+    }
+    private void Counting()
     {
         if (count == 2)
         {

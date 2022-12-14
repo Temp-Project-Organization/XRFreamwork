@@ -109,9 +109,10 @@ MonoBehaviour:
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   patrolSpeed: 2
-  runSpeed: 0
-  damping: 1
+  pistol: {fileID: 8720040346113558661, guid: 09d9c32d3d9f9604594ba20930b086d8, type: 3}
 --- !u!1 &5853223475213228129
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +560,6 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 03cd26eddfc134a6dbc4d40f15965660, type: 3}
 --- !u!4 &4297221680253675349 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 03cd26eddfc134a6dbc4d40f15965660,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 03cd26eddfc134a6dbc4d40f15965660, type: 3}
   m_PrefabInstance: {fileID: 4297221680254074325}
   m_PrefabAsset: {fileID: 0}
