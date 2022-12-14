@@ -42,7 +42,11 @@ namespace Autohand.Demo
                 // 해당 코드에서 hitTarget을 True로 바꿔주는 것
                 if (hit.collider.gameObject.CompareTag("ENEMY"))
                 {
-                    hitCounter++;
+                    hitCounter = 1;
+                }
+                else
+                {
+                    hitCounter = 0;
                 }
             }
             else

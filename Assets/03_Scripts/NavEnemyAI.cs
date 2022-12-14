@@ -13,7 +13,7 @@ public class NavEnemyAI : MonoBehaviour
     [SerializeField][Range(0, 100)] private float           patrolSpeed = 0.0f;    // 배회 속도
  // [SerializeField][Range(0, 100)] private float           runSpeed    = 0.0f;    // 달리기 속도
  // [SerializeField][Range(0, 100)] private float           damping     = 1.0f;    // 보정값
-    [SerializeField] private int deadState = 3;
+    [SerializeField] private int deadCounter = 3;
 
     private Transform    enemyTransform;
     private Animator     animator;
@@ -55,7 +55,7 @@ public class NavEnemyAI : MonoBehaviour
         aiAgent.destination = wayPoints[index].position;  // 다음 목적지를 wayPoints Array에서 추출한 위치로 다음 목적지를 지정
         animator.SetBool("IsMove", true);
 
-        int hitCounter = pistol.GetHitCounter();
+        int hit = pistol.GetHitCounter();
 
         if (aiAgent.velocity.sqrMagnitude >= 0.04f        // NavMeshAgent가 이동하고 있고, 목적지 도착 여부 계산
             && aiAgent.remainingDistance <= 1.0f)
@@ -67,13 +67,14 @@ public class NavEnemyAI : MonoBehaviour
             index = 0;
         }
 
-        if (hitCounter == deadState)
+        deadCounter -= hit;
+
+        if (deadCounter == 0)
         {
             aiAgent.isStopped = true;
             aiAgent.velocity = Vector3.zero;
             animator.SetInteger(hashDieIndex, Random.Range(0, 3));
             GetComponent<CapsuleCollider>().enabled = false;
-            pistol.GetComponent<Pistol>().SetHitCounter(0);
         }
     }
 }
