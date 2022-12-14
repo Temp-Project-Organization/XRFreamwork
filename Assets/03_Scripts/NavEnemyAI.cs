@@ -18,10 +18,9 @@ public class NavEnemyAI : MonoBehaviour
     private Transform    enemyTransform;
     private Animator     animator;
     private NavMeshAgent aiAgent;
-    public Pistol pistol;
+    private Pistol pistol;
 
     private int          index;
-    private int          deadCount;
     private readonly int hashDieIndex = Animator.StringToHash("DieIndex");
 
     private void Awake()
@@ -32,8 +31,6 @@ public class NavEnemyAI : MonoBehaviour
 
         aiAgent.autoBraking    = false;                 // 목적지에 가까워질수록 속도가 감소하는 옵션 비활성화
         // aiAgent.updateRotation = false;              // 자동으로 회전하는 기능 비활성화
-
-        deadCount = 0;
     }
 
     private void Start()
@@ -58,6 +55,8 @@ public class NavEnemyAI : MonoBehaviour
         aiAgent.destination = wayPoints[index].position;  // 다음 목적지를 wayPoints Array에서 추출한 위치로 다음 목적지를 지정
         animator.SetBool("IsMove", true);
 
+        int hitCounter = pistol.GetHitCounter();
+
         if (aiAgent.velocity.sqrMagnitude >= 0.04f        // NavMeshAgent가 이동하고 있고, 목적지 도착 여부 계산
             && aiAgent.remainingDistance <= 1.0f)
         {
@@ -68,7 +67,7 @@ public class NavEnemyAI : MonoBehaviour
             index = 0;
         }
 
-        if (pistol.GetHitCounter() == 3)
+        if (hitCounter == deadState)
         {
             aiAgent.isStopped = true;
             aiAgent.velocity = Vector3.zero;

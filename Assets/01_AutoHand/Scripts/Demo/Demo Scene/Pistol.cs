@@ -16,7 +16,7 @@ namespace Autohand.Demo
         public float range = 100;
         public float shootVolume = 1f;
 
-        private int hitCounter = 0;
+        private static int hitCounter = 0;
 
         private void Start()
         {
