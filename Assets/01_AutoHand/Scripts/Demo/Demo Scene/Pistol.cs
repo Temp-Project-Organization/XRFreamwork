@@ -17,9 +17,12 @@ namespace Autohand.Demo
         public float shootVolume = 1f;
 
         private static int hitCounter = 0;
+        private NavEnemyAI enemy;
 
         private void Start()
         {
+            enemy = GameObject.Find("Enemy").GetComponent<NavEnemyAI>();
+
             if (body == null && GetComponent<Rigidbody>() != null)
             {
                 body = GetComponent<Rigidbody>();
@@ -42,11 +45,7 @@ namespace Autohand.Demo
                 // 해당 코드에서 hitTarget을 True로 바꿔주는 것
                 if (hit.collider.gameObject.CompareTag("ENEMY"))
                 {
-                    hitCounter = 1;
-                }
-                else
-                {
-                    hitCounter = 0;
+                    enemy.SetDeadCounter(1);
                 }
             }
             else
@@ -54,16 +53,6 @@ namespace Autohand.Demo
                 Debug.DrawRay(barrelTip.position, (hit.point - barrelTip.position), Color.green, 5);
             }
 
-        }
-
-        public int GetHitCounter()
-        {
-            return hitCounter;
-        }
-
-        public void SetHitCounter(int value)
-        {
-            hitCounter = value;
         }
     }
 }

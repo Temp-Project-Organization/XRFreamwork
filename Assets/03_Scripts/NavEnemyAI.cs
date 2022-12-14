@@ -55,7 +55,6 @@ public class NavEnemyAI : MonoBehaviour
         aiAgent.destination = wayPoints[index].position;  // 다음 목적지를 wayPoints Array에서 추출한 위치로 다음 목적지를 지정
         animator.SetBool("IsMove", true);
 
-        int hit = pistol.GetHitCounter();
 
         if (aiAgent.velocity.sqrMagnitude >= 0.04f        // NavMeshAgent가 이동하고 있고, 목적지 도착 여부 계산
             && aiAgent.remainingDistance <= 1.0f)
@@ -67,8 +66,6 @@ public class NavEnemyAI : MonoBehaviour
             index = 0;
         }
 
-        deadCounter -= hit;
-
         if (deadCounter == 0)
         {
             aiAgent.isStopped = true;
@@ -76,5 +73,10 @@ public class NavEnemyAI : MonoBehaviour
             animator.SetInteger(hashDieIndex, Random.Range(0, 3));
             GetComponent<CapsuleCollider>().enabled = false;
         }
+    }
+
+    public void SetDeadCounter(int value)
+    {
+        deadCounter -= value;
     }
 }
