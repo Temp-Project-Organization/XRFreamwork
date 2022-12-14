@@ -10,6 +10,7 @@ namespace Autohand.Demo
         public Transform barrelTip;
         public LayerMask layer;
         public AudioClip shootSound;
+        public GameObject enemy;
 
         public float hitPower = 1;
         public float recoilPower = 1;
@@ -17,11 +18,10 @@ namespace Autohand.Demo
         public float shootVolume = 1f;
 
         private static int hitCounter = 0;
-        private NavEnemyAI enemy;
 
         private void Start()
         {
-            enemy = GameObject.Find("Enemy").GetComponent<NavEnemyAI>();
+
 
             if (body == null && GetComponent<Rigidbody>() != null)
             {
@@ -45,7 +45,7 @@ namespace Autohand.Demo
                 // 해당 코드에서 hitTarget을 True로 바꿔주는 것
                 if (hit.collider.gameObject.CompareTag("ENEMY"))
                 {
-                    enemy.SetDeadCounter(1);
+                    enemy.GetComponent<NavEnemyAI>().SetDeadCounter(1);
                 }
             }
             else

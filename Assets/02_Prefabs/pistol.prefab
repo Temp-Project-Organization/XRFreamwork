@@ -1687,13 +1687,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 0}
   barrelTip: {fileID: 134960161612353918}
-  hitPower: 1
-  recoilPower: 1
-  range: 50
   layer:
     serializedVersion: 2
     m_Bits: 4294967295
   shootSound: {fileID: 8300000, guid: 56b55326d07c3a04c84a9e0cd1ac8dd1, type: 3}
+  enemy: {fileID: 5853223475213228041, guid: 48a52ea3731875b4aab4c9e3417a886f, type: 3}
+  hitPower: 1
+  recoilPower: 1
+  range: 50
   shootVolume: 1
 --- !u!114 &1618882643009051528
 MonoBehaviour:
