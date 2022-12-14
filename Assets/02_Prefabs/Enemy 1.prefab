@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5853223475553887372}
   - component: {fileID: 5853223475222588329}
   - component: {fileID: 5853223475553887362}
-  - component: {fileID: 5853223475553887363}
+  - component: {fileID: 8337451710243204842}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5853223475553887363
+--- !u!114 &8337451710243204842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,17 +103,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5853223475213228041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2042d28590ff19540843c000c2587e56, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f930b8c873e3f4469186680618f739c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  patrolSpeed: 2
+  wayPoints: []
+  patrolSpeed: 0
   deadState: 3
-  pistol: {fileID: 8720040346113558661, guid: 09d9c32d3d9f9604594ba20930b086d8, type: 3}
+  pistol: {fileID: 0}
 --- !u!1 &5853223475213228129
 GameObject:
   m_ObjectHideFlags: 0

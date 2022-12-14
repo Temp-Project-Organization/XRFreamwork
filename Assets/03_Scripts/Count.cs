@@ -8,7 +8,7 @@ public class Count : MonoBehaviour
     private Animator animator;
     private void Awake()
     {
-        count = 0;
+        count = (int)GameObject.FindGameObjectsWithTag("ENEMY").Length;
         animator = GetComponent<Animator>();
     }
 
@@ -22,9 +22,10 @@ public class Count : MonoBehaviour
     {
 
     }
+
     private void Counting()
     {
-        if (count == 2)
+        if (count == 0)
         {
             animator.SetBool("isOpen", true);
         }

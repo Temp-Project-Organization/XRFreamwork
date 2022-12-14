@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class NavEnemyAI : MonoBehaviour
+public class TNavEnemyAI : MonoBehaviour
 {
     public List<Transform> wayPoints;             // 순찰 지점들을 저장하기 위한 List Type 변수
 

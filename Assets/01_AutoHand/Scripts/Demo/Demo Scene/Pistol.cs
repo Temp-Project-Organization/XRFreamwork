@@ -16,11 +16,12 @@ namespace Autohand.Demo
         public float range = 100;
         public float shootVolume = 1f;
 
-        public bool hitTarget = false;
-
+        private bool hitTarget;
 
         private void Start()
         {
+            hitTarget = false;
+
             if (body == null && GetComponent<Rigidbody>() != null)
             {
                 body = GetComponent<Rigidbody>();
@@ -34,23 +35,29 @@ namespace Autohand.Demo
             {
                 AudioSource.PlayClipAtPoint(shootSound, transform.position, shootVolume);
             }
+            
+            body.AddForce(barrelTip.transform.up * recoilPower * 5, ForceMode.Impulse);
 
             RaycastHit hit;
             if (Physics.Raycast(barrelTip.position, barrelTip.forward, out hit, range, layer))
             {
+                // 해당 코드에서 hitTarget을 True로 바꿔주는 것
                 if (hit.collider.gameObject.CompareTag("ENEMY"))
                 {
-                    Debug.DrawRay(barrelTip.position, barrelTip.forward * range, Color.red, 1);
                     hitTarget = true;
+                    Debug.Log(hitTarget);
                 }
             }
             else
             {
-                hitTarget = false;
                 Debug.DrawRay(barrelTip.position, (hit.point - barrelTip.position), Color.green, 5);
             }
 
-            body.AddForce(barrelTip.transform.up*recoilPower*5, ForceMode.Impulse);
+        }
+
+        public bool GetHitTarget()
+        {
+            return hitTarget;
         }
     }
 }
