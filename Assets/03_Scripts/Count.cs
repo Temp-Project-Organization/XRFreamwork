@@ -5,6 +5,7 @@ using UnityEngine;
 public class Count : MonoBehaviour
 {
     int count;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +17,16 @@ public class Count : MonoBehaviour
     {
 
     }
+    private void Awake()
+    {
+        count = 0;
+        animator = GetComponent<Animator>();
+    }
     void Counting()
     {
-        if (count == 3)
+        if (count == 2)
         {
-            transform.GetComponent<Animator>().SetBool("door", true);
+            animator.SetBool("isOpen", true);
         }
     }
 }
