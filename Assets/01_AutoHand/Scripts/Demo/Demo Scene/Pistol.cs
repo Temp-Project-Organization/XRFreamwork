@@ -42,10 +42,19 @@ namespace Autohand.Demo
             RaycastHit hit;
             if (Physics.Raycast(barrelTip.position, barrelTip.forward, out hit, range, layer))
             {
-                // 해당 코드에서 hitTarget을 True로 바꿔주는 것
-                if (hit.collider.gameObject.CompareTag("ENEMY"))
+                var hitBody = hit.transform.GetComponent<Rigidbody>();
+                if (hitBody != null)
                 {
-                    enemy.GetComponent<NavEnemyAI>().DeadCounter();
+                    Debug.DrawRay(barrelTip.position, (hit.point - barrelTip.position), Color.green, 5);
+                    hitBody.GetComponent<Smash>()?.DoSmash();
+                    hitBody.AddForceAtPosition((hit.point - barrelTip.position).normalized * hitPower * 10, hit.point, ForceMode.Impulse);
+
+                    // 해당 코드에서 hitTarget을 True로 바꿔주는 것
+                    if (hit.collider.gameObject.CompareTag("ENEMY"))
+                    {
+                        enemy.GetComponent<NavEnemyAI>().DeadCounter();
+                    }
+
                 }
             }
             else

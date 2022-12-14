@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5853223475222588329}
   - component: {fileID: 5853223475553887362}
   - component: {fileID: 5853223475553887363}
+  - component: {fileID: -1553316199292368941}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -112,8 +113,23 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   patrolSpeed: 2
-  deadState: 3
-  pistol: {fileID: 8720040346113558661, guid: 09d9c32d3d9f9604594ba20930b086d8, type: 3}
+  deadCounter: 3
+--- !u!54 &-1553316199292368941
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5853223475213228041}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5853223475213228129
 GameObject:
   m_ObjectHideFlags: 0
