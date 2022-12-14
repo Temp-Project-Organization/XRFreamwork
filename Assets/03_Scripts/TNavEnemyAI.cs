@@ -73,28 +73,22 @@ public class TNavEnemyAI : MonoBehaviour
         if (pistol.GetComponent<Pistol>().GetHitTarget())
         {
             deadCount++;
-            Debug.Log(deadCount);
         }
-    }
 
-    private void OnEnable()
-    {
         if (deadCount == deadState)
         {
             StartCoroutine(Action());
         }
+
     }
 
     private IEnumerator Action()
     {
         yield return wfs;
 
-        if (deadCount == 3)
-        {
-            aiAgent.isStopped = true;
-            aiAgent.velocity = Vector3.zero;
-            animator.SetInteger(hashDieIndex, Random.Range(0, 3));
-            GetComponent<CapsuleCollider>().enabled = false;
-        }
+        aiAgent.isStopped = true;
+        aiAgent.velocity = Vector3.zero;
+        animator.SetInteger(hashDieIndex, Random.Range(0, 3));
+        GetComponent<CapsuleCollider>().enabled = false;
     }
 }
