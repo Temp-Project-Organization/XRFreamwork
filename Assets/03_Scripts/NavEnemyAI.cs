@@ -67,18 +67,13 @@ public class NavEnemyAI : MonoBehaviour
             index = 0;
         }
 
-        // 여기서 hitTarget이 true가 안되서 카운팅이 안되고, 적이 사망하지 않는 것 같음
-        if (pistol.GetComponent<Pistol>().GetHitTarget())
-        {
-            deadCount++;
-        }
-
-        if (deadCount == deadState)
+        if (pistol.GetComponent<Pistol>().GetHitCounter() == deadState)
         {
             aiAgent.isStopped = true;
             aiAgent.velocity = Vector3.zero;
             animator.SetInteger(hashDieIndex, Random.Range(0, 3));
             GetComponent<CapsuleCollider>().enabled = false;
+            pistol.GetComponent<Pistol>().SetHitCounter(0);
         }
     }
 }

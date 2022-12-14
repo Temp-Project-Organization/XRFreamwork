@@ -16,7 +16,7 @@ namespace Autohand.Demo
         public float range = 100;
         public float shootVolume = 1f;
 
-        private bool hitTarget;
+        private int hitCounter = 0;
 
         private void Start()
         {
@@ -44,8 +44,7 @@ namespace Autohand.Demo
                 // 해당 코드에서 hitTarget을 True로 바꿔주는 것
                 if (hit.collider.gameObject.CompareTag("ENEMY"))
                 {
-                    hitTarget = true;
-                    Debug.Log(hitTarget);
+                    hitCounter++;
                 }
             }
             else
@@ -55,9 +54,14 @@ namespace Autohand.Demo
 
         }
 
-        public bool GetHitTarget()
+        public int GetHitCounter()
         {
-            return hitTarget;
+            return hitCounter;
+        }
+
+        public void SetHitCounter(int value)
+        {
+            hitCounter = value;
         }
     }
 }
