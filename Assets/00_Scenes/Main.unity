@@ -1136,6 +1136,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3283853256833200764, guid: 09d9c32d3d9f9604594ba20930b086d8, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1724394684581881424, guid: 998137a428e0da44db3402e204b7a842, type: 3}
+    - target: {fileID: 3283853256833200764, guid: 09d9c32d3d9f9604594ba20930b086d8, type: 3}
+      propertyPath: muzzlePosition
+      value: 
+      objectReference: {fileID: 2142680513}
     - target: {fileID: 8234865809757573695, guid: 09d9c32d3d9f9604594ba20930b086d8, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1638,6 +1646,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.25
+--- !u!4 &2142680513 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4126901959998315194, guid: 09d9c32d3d9f9604594ba20930b086d8, type: 3}
+  m_PrefabInstance: {fileID: 1524286075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7994617666491410558
 PrefabInstance:
   m_ObjectHideFlags: 0
