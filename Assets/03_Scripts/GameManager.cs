@@ -10,11 +10,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> spawnPoint;
     [SerializeField] private int next = 0;
     [SerializeField] private int maxEnemy = 2;
-    [SerializeField] private int enemyCount;
+    [SerializeField] private int enemyList;
 
     private void Awake()
     {
-        enemyCount = maxEnemy;
+        enemyList = maxEnemy;
     }
 
     private void Start()
@@ -56,13 +56,13 @@ public class GameManager : MonoBehaviour
 
     public int GetEnemyCount()
     {
-        Debug.Log(enemyCount);
-        return enemyCount;
+        Debug.Log(enemyList);
+        return enemyList;
     }
 
     public void SetEnemyCount(int value)
     {
-        enemyCount -= value;
-        Debug.Log(enemyCount);
+        enemyList -= value;
+        Debug.Log(enemyList);
     }
 }
