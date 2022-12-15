@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> spawnPoint;
     [SerializeField] private int next = 0;
     [SerializeField] private int maxEnemy = 2;
-    public int enemyCount;
+    [SerializeField] private int enemyCount;
 
     private void Start()
     {
@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
             }
 
         }
+    }
+
+    public int GetEnemyCount()
+    {
+        return enemyCount;
     }
 
     public void SetEnemyCount(int value)
