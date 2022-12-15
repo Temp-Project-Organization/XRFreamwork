@@ -15,6 +15,7 @@ public class NavEnemyAI : MonoBehaviour
  // [SerializeField][Range(0, 100)] private float           damping     = 1.0f;    // º¸Á¤°ª
     [SerializeField] public int deadCounter = 0;
 
+    private GameManager gameManager;
     private Transform    enemyTransform;
     private Animator     animator;
     private NavMeshAgent aiAgent;
@@ -81,6 +82,7 @@ public class NavEnemyAI : MonoBehaviour
             animator.SetTrigger("Die");
             GetComponent<CapsuleCollider>().enabled = false;
             counter = 0;
+            gameManager.GetComponent<GameManager>().SetEnemyCount(1);
         }
     }
 }

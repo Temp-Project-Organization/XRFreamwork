@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> spawnPoint;
     [SerializeField] private int next = 0;
     [SerializeField] private int maxEnemy = 2;
+    public int enemyCount;
 
     private void Start()
     {
@@ -21,6 +22,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        enemyCount = (int)GameObject.FindGameObjectsWithTag("ENEMY").Length;
+    }
     private IEnumerator CreateEnemy()
     {
         // 현재 생성된 적 캐릭터의 개수 산출
@@ -47,5 +52,10 @@ public class GameManager : MonoBehaviour
             }
 
         }
+    }
+
+    public void SetEnemyCount(int value)
+    {
+        enemyCount -= value;
     }
 }
