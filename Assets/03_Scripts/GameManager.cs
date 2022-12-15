@@ -10,12 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> spawnPoint;
     [SerializeField] private int next = 0;
     [SerializeField] private int maxEnemy = 2;
-    [HideInInspector] public int enemyList;
-
-    private void Awake()
-    {
-        enemyList = maxEnemy;
-    }
+    [HideInInspector] public int enemyList = 0;
 
     private void Start()
     {
@@ -54,9 +49,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int GetEnemyCount()
+    public int GetMaxEnemy()
     {
-        Debug.Log(enemyList);
-        return enemyList;
+        return maxEnemy;
+    }
+
+    public void EnemyListDrop()
+    {
+        int enemyList = maxEnemy;
+
+        enemyList--;
     }
 }

@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class Count : MonoBehaviour
 {
-    public GameObject gameManager;
+    public GameManager gameManager;
 
     [SerializeField][Range(0.0f, 100.0f)] private float damp = 1.0f;
 
+    private int counter;
+
     private void Awake()
     {
-        gameManager = GameObject.Find("GameManager");
-    }
-
-    private void Update()
-    {
-
+        counter = gameManager.GetComponent<GameManager>().GetMaxEnemy();
     }
 
     private void FixedUpdate()
     {
-        if (gameManager.GetComponent<GameManager>().GetEnemyCount() == 0)
+        if (counter == 0)
         {
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(100.0f, 0.0f, 0.0f)), Time.deltaTime * damp);
         }

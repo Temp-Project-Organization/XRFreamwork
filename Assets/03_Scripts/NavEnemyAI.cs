@@ -63,11 +63,6 @@ public class NavEnemyAI : MonoBehaviour
         {
             index = 0;
         }
-
-        if(counter == deadCounter)
-        {
-            gameManager.GetComponent<GameManager>().enemyList--;
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -84,6 +79,8 @@ public class NavEnemyAI : MonoBehaviour
             animator.SetTrigger("Die");
             GetComponent<CapsuleCollider>().enabled = false;
             counter = 0;
+
+            gameManager.EnemyListDrop();
         }
     }
 }
