@@ -12,10 +12,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxEnemy = 2;
     [SerializeField] private int enemyCount;
 
+    private void Awake()
+    {
+        enemyCount = maxEnemy;
+    }
+
     private void Start()
     {
         points = GameObject.Find("SpawnPoint_Gruops").GetComponentsInChildren<Transform>();
-        enemyCount = maxEnemy;
 
         if (points.Length > 0)
         {
