@@ -8,6 +8,7 @@ TagManager:
   - PLAYER
   - ENEMY
   - BULLET
+  - MAP
   layers:
   - Default
   - TransparentFX

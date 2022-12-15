@@ -4,30 +4,15 @@ using UnityEngine;
 
 public class Count : MonoBehaviour
 {
-    int count;
-    private Animator animator;
-    private void Awake()
+    private float rot = 0.0f;
+
+    [SerializeField][Range(0.0f, 100.0f)] private float damp = 1.0f;
+
+    private void FixedUpdate()
     {
-        count = (int)GameObject.FindGameObjectsWithTag("ENEMY").Length;
-        animator = GetComponent<Animator>();
-    }
-
-    private void Start()
-    {
-        
-    }
-
-
-    private void Update()
-    {
-
-    }
-
-    private void Counting()
-    {
-        if (count == 0)
+        if ((int)GameObject.FindGameObjectsWithTag("ENEMY").Length == 2)
         {
-            animator.SetBool("isOpen", true);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(80.0f, 0.0f, 0.0f)), Time.deltaTime);
         }
     }
 }

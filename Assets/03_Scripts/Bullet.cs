@@ -50,6 +50,13 @@ public class Bullet : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("MAP"))
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 }
