@@ -66,7 +66,7 @@ public class NavEnemyAI : MonoBehaviour
 
         if(counter == deadCounter)
         {
-            gameManager.GetComponent<GameManager>().SetEnemyCount(1);
+            gameManager.GetComponent<GameManager>().enemyList--;
         }
     }
 

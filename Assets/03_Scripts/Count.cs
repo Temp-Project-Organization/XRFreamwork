@@ -20,7 +20,6 @@ public class Count : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(gameManager.GetComponent<GameManager>().GetEnemyCount());
         if (gameManager.GetComponent<GameManager>().GetEnemyCount() == 0)
         {
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(100.0f, 0.0f, 0.0f)), Time.deltaTime * damp);
