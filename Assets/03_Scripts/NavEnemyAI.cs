@@ -54,7 +54,6 @@ public class NavEnemyAI : MonoBehaviour
         aiAgent.destination = wayPoints[index].position;  // 다음 목적지를 wayPoints Array에서 추출한 위치로 다음 목적지를 지정
         animator.SetBool("IsMove", true);
 
-
         if (aiAgent.velocity.sqrMagnitude >= 0.04f        // NavMeshAgent가 이동하고 있고, 목적지 도착 여부 계산
             && aiAgent.remainingDistance <= 1.0f)
         {
@@ -63,6 +62,11 @@ public class NavEnemyAI : MonoBehaviour
         else if (index > wayPoints.Count)
         {
             index = 0;
+        }
+
+        if(counter == deadCounter)
+        {
+            gameManager.GetComponent<GameManager>().SetEnemyCount(1);
         }
     }
 
@@ -81,10 +85,5 @@ public class NavEnemyAI : MonoBehaviour
             GetComponent<CapsuleCollider>().enabled = false;
             counter = 0;
         }
-    }
-
-    private void OnDisable()
-    {
-        gameManager.GetComponent<GameManager>().SetEnemyCount(1);
     }
 }
