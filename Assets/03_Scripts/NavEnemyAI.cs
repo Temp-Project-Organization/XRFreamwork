@@ -75,12 +75,12 @@ public class NavEnemyAI : MonoBehaviour
         
         if(counter == deadCounter)
         {
+            gameManager.GetComponent<GameManager>().SetEnemyCount(1);
             aiAgent.isStopped = true;
             aiAgent.velocity = Vector3.zero;
             animator.SetTrigger("Die");
             GetComponent<CapsuleCollider>().enabled = false;
             counter = 0;
-            gameManager.GetComponent<GameManager>().SetEnemyCount(1);
         }
     }
 }

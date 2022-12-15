@@ -10,13 +10,12 @@ public class Count : MonoBehaviour
 
     private void Awake()
     {
-        // GameManager Prefabs
         gameManager = GameObject.Find("GameManager");
     }
 
     private void FixedUpdate()
     {
-        if (gameManager.GetComponent<GameManager>().GetEnemyCount() == 2)
+        if (gameManager.GetComponent<GameManager>().GetEnemyCount() == 0)
         {
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(new Vector3(100.0f, 0.0f, 0.0f)), Time.deltaTime * damp);
         }
