@@ -52,11 +52,13 @@ public class GameManager : MonoBehaviour
 
     public int GetEnemyCount()
     {
+        Debug.Log(enemyCount);
         return enemyCount;
     }
 
     public void SetEnemyCount(int value)
     {
         enemyCount -= value;
+        Debug.Log(enemyCount);
     }
 }
