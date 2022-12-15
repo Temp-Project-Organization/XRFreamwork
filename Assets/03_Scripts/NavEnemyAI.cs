@@ -22,7 +22,6 @@ public class NavEnemyAI : MonoBehaviour
 
     private int          index;
     private int          counter = 0;
-    private readonly int hashDieIndex = Animator.StringToHash("DieIndex");
 
     private void Awake()
     {
@@ -74,12 +73,12 @@ public class NavEnemyAI : MonoBehaviour
         {
             counter++;
         }
-        else if(counter == deadCounter)
+        
+        if(counter == deadCounter)
         {
             aiAgent.isStopped = true;
             aiAgent.velocity = Vector3.zero;
-            animator.SetInteger(hashDieIndex, Random.Range(0, 3));
-            GetComponent<CapsuleCollider>().enabled = false;
+            animator.SetTrigger("Die");
             counter = 0;
         }
     }
