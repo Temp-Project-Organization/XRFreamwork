@@ -79,6 +79,7 @@ public class NavEnemyAI : MonoBehaviour
             aiAgent.isStopped = true;
             aiAgent.velocity = Vector3.zero;
             animator.SetTrigger("Die");
+            GetComponent<CapsuleCollider>().enabled = false;
             counter = 0;
         }
     }
