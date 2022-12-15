@@ -15,16 +15,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         points = GameObject.Find("SpawnPoint_Gruops").GetComponentsInChildren<Transform>();
+        enemyCount = maxEnemy;
 
         if (points.Length > 0)
         {
             StartCoroutine(this.CreateEnemy());
         }
-    }
-
-    private void Update()
-    {
-        enemyCount = (int)GameObject.FindGameObjectsWithTag("ENEMY").Length;
     }
     private IEnumerator CreateEnemy()
     {
@@ -37,7 +33,7 @@ public class GameManager : MonoBehaviour
             if (enemyCount < maxEnemy)
             {
                 // 적 캐릭터의 생성 주기 시간만큼 대기
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.1f);
 
                 // 적 캐릭터의 동적 생성
                 int index = Random.Range(0, points.Length);
