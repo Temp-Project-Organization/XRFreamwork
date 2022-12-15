@@ -21,6 +21,7 @@ public class NavEnemyAI : MonoBehaviour
     private Pistol pistol;
 
     private int          index;
+    private int          counter = 0;
     private readonly int hashDieIndex = Animator.StringToHash("DieIndex");
 
     private void Awake()
@@ -69,8 +70,6 @@ public class NavEnemyAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        int counter = 0;
-
         if(other.gameObject.CompareTag("BULLET"))
         {
             counter++;
@@ -81,6 +80,7 @@ public class NavEnemyAI : MonoBehaviour
             aiAgent.velocity = Vector3.zero;
             animator.SetInteger(hashDieIndex, Random.Range(0, 3));
             GetComponent<CapsuleCollider>().enabled = false;
+            counter = 0;
         }
     }
 }
