@@ -67,11 +67,20 @@ public class NavEnemyAI : MonoBehaviour
         }
     }
 
-    public void Dead()
+    private void OnTriggerEnter(Collider other)
     {
-        aiAgent.isStopped = true;
-        aiAgent.velocity = Vector3.zero;
-        animator.SetInteger(hashDieIndex, Random.Range(0, 3));
-        GetComponent<CapsuleCollider>().enabled = false;
+        int counter = 0;
+
+        if(other.gameObject.CompareTag("BULLET"))
+        {
+            counter++;
+        }
+        else if(counter == deadCounter)
+        {
+            aiAgent.isStopped = true;
+            aiAgent.velocity = Vector3.zero;
+            animator.SetInteger(hashDieIndex, Random.Range(0, 3));
+            GetComponent<CapsuleCollider>().enabled = false;
+        }
     }
 }

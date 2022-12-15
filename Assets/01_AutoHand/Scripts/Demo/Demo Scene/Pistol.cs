@@ -10,14 +10,14 @@ namespace Autohand.Demo
         public Transform barrelTip;
         public LayerMask layer;
         public AudioClip shootSound;
-        public GameObject enemy;
-
+      
         public float hitPower = 1;
         public float recoilPower = 1;
         public float range = 100;
         public float shootVolume = 1f;
 
-        private static int hitCounter = 0;
+        [SerializeField] private GameObject bullet;
+        [SerializeField] private Transform muzzlePosition;
 
         private void Start()
         {
@@ -39,28 +39,33 @@ namespace Autohand.Demo
             
             body.AddForce(barrelTip.transform.up * recoilPower * 5, ForceMode.Impulse);
 
-            RaycastHit hit;
-            if (Physics.Raycast(barrelTip.position, barrelTip.forward, out hit, range, layer))
-            {
-                // 해당 코드에서 DeadCounter를 ++로 더하는 형태
-                if (hit.collider.gameObject.CompareTag("ENEMY"))
-                {
-                    enemy.GetComponent<NavEnemyAI>().Dead();
-                }
+            //RaycastHit hit;
+            //if (Physics.Raycast(barrelTip.position, barrelTip.forward, out hit, range, layer))
+            //{
+            //    var hitBody = hit.transform.GetComponent<Rigidbody>();
+            //    if (hitBody != null)
+            //    {
+            //        Debug.DrawRay(barrelTip.position, (hit.point - barrelTip.position), Color.green, 5);
+            //        hitBody.GetComponent<Smash>()?.DoSmash();
+            //        hitBody.AddForceAtPosition((hit.point - barrelTip.position).normalized * hitPower * 10, hit.point, ForceMode.Impulse);
+            //    }
+            //}
+            //else
+            //{
+            //    Debug.DrawRay(barrelTip.position, (hit.point - barrelTip.position), Color.green, 5);
+            //}
 
-                var hitBody = hit.transform.GetComponent<Rigidbody>();
-                if (hitBody != null)
-                {
-                    Debug.DrawRay(barrelTip.position, (hit.point - barrelTip.position), Color.green, 5);
-                    hitBody.GetComponent<Smash>()?.DoSmash();
-                    hitBody.AddForceAtPosition((hit.point - barrelTip.position).normalized * hitPower * 10, hit.point, ForceMode.Impulse);
-                }
-            }
-            else
-            {
-                Debug.DrawRay(barrelTip.position, (hit.point - barrelTip.position), Color.green, 5);
-            }
 
+            StartCoroutine(FireCoolTime());
+
+           
+        }
+
+        private IEnumerator FireCoolTime()
+        {
+            yield return new WaitForSeconds(0.2f);
+
+            Instantiate(bullet, muzzlePosition.transform.position, muzzlePosition.transform.rotation);
         }
     }
 }
