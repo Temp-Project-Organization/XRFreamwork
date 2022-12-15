@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Count : MonoBehaviour
 {
-    private float rot = 0.0f;
-
     public GameObject gameManager;
 
     [SerializeField][Range(0.0f, 100.0f)] private float damp = 1.0f;

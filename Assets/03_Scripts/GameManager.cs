@@ -50,10 +50,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int GetEnemyCount()
+    public void SetEnemyCount(int value)
     {
-        enemyCount--;
-
-        return enemyCount;
+        enemyCount -= value;
     }
 }

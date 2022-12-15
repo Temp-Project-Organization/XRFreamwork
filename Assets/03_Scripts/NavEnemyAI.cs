@@ -8,17 +8,15 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NavEnemyAI : MonoBehaviour
 {
-    public List<Transform> wayPoints;             // 순찰 지점들을 저장하기 위한 List Type 변수
+    public List<Transform> wayPoints;                                              // 순찰 지점들을 저장하기 위한 List Type 변수
 
     [SerializeField][Range(0, 100)] private float           patrolSpeed = 0.0f;    // 배회 속도
- // [SerializeField][Range(0, 100)] private float           runSpeed    = 0.0f;    // 달리기 속도
- // [SerializeField][Range(0, 100)] private float           damping     = 1.0f;    // 보정값
     [SerializeField] public int deadCounter = 0;
 
-    private GameManager gameManager;
-    private Transform    enemyTransform;
-    private Animator     animator;
-    private NavMeshAgent aiAgent;
+    private GameManager gameManager;                                                // GameManager에 저장된 스크립트 호출
+    private Transform    enemyTransform;                                            // Enemy가 가진 Transform Component 호출
+    private Animator     animator;                                                  // animator 호출
+    private NavMeshAgent aiAgent;                               
     private Pistol pistol;
 
     private int          index;
@@ -77,12 +75,12 @@ public class NavEnemyAI : MonoBehaviour
         
         if(counter == deadCounter)
         {
-            gameManager.GetComponent<GameManager>().GetEnemyCount();
             aiAgent.isStopped = true;
             aiAgent.velocity = Vector3.zero;
             animator.SetTrigger("Die");
             GetComponent<CapsuleCollider>().enabled = false;
             counter = 0;
+            gameManager.GetComponent<GameManager>().SetEnemyCount(1);
         }
     }
 }
