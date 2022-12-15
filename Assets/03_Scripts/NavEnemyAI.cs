@@ -82,7 +82,7 @@ public class NavEnemyAI : MonoBehaviour
             animator.SetTrigger("Die");
             GetComponent<CapsuleCollider>().enabled = false;
             counter = 0;
-            gameManager.GetComponent<GameManager>().SetEnemyCount(1);
+            gameManager.GetComponent<GameManager>().SetEnemyCount();
         }
     }
 }
