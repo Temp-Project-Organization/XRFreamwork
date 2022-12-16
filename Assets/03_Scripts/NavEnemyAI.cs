@@ -14,6 +14,8 @@ public class NavEnemyAI : MonoBehaviour
     [SerializeField] public int deadCounter = 0;
 
     private GameManager gameManager;                                                // GameManager에 저장된 스크립트 호출
+    private EnemyManager enemyManager;
+
     private Transform    enemyTransform;                                            // Enemy가 가진 Transform Component 호출
     private Animator     animator;                                                  // animator 호출
     private NavMeshAgent aiAgent;                               
@@ -63,11 +65,6 @@ public class NavEnemyAI : MonoBehaviour
         {
             index = 0;
         }
-
-        if(counter == deadCounter)
-        {
-            gameManager.EnemyListDrop();
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -79,6 +76,7 @@ public class NavEnemyAI : MonoBehaviour
         
         if(counter == deadCounter)
         {
+            enemyManager.ProcessingEnemyCount();
             aiAgent.isStopped = true;
             aiAgent.velocity = Vector3.zero;
             animator.SetTrigger("Die");

@@ -6,12 +6,13 @@ public class GameManager : MonoBehaviour
 {
     public Transform[] points;
 
+    private static GameManager instnace;
+
     [SerializeField] private GameObject enemy;
     [SerializeField] private List<GameObject> spawnPoint;
     [SerializeField] private int next = 0;
     [SerializeField] private int maxEnemy = 2;
     [HideInInspector] public int enemyList = 0;
-
     private void Start()
     {
         points = GameObject.Find("SpawnPoint_Gruops").GetComponentsInChildren<Transform>();
@@ -51,13 +52,6 @@ public class GameManager : MonoBehaviour
 
     public int GetMaxEnemy()
     {
-        return maxEnemy;
-    }
-
-    public void EnemyListDrop()
-    {
-        int enemyList = maxEnemy;
-
-        enemyList--;
+        return enemyList;
     }
 }
