@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (deleteTime >= 10.0f)
+        if (deleteTime >= 2.0f)
         {
             this.gameObject.SetActive(false);
 

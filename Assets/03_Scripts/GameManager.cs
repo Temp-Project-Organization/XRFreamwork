@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> spawnPoint;
     [SerializeField] private int next = 0;
     [SerializeField] private int maxEnemy = 2;
-    [HideInInspector] public int enemyList = 0;
 
     private void Awake()
     {

@@ -14,7 +14,6 @@ public class NavEnemyAI : MonoBehaviour
     [SerializeField] public int deadCounter = 0;
 
     public GameManager gameManager;                                                // GameManager에 저장된 스크립트 호출
-    private EnemyManager enemyManager;
 
     private Transform    enemyTransform;                                            // Enemy가 가진 Transform Component 호출
     private Animator     animator;                                                  // animator 호출
