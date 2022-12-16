@@ -10,9 +10,10 @@ public class Count : MonoBehaviour
 
     private void Awake()
     {
+
     }
 
-    private void LateUpdate()
+    public void LateUpdate()
     {
         if (counter == 0)
         {
