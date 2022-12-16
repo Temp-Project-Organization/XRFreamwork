@@ -114,6 +114,7 @@ MonoBehaviour:
   - {fileID: 0}
   patrolSpeed: 2
   deadCounter: 3
+  gameManager: {fileID: 6808481895610507270, guid: 071fde1f16a8058429a79b5fc0a24a0a, type: 3}
 --- !u!54 &-5794788312136069786
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class NavEnemyAI : MonoBehaviour
     [SerializeField][Range(0, 100)] private float           patrolSpeed = 0.0f;    // 배회 속도
     [SerializeField] public int deadCounter = 0;
 
-    private GameManager gameManager;                                                // GameManager에 저장된 스크립트 호출
+    public GameManager gameManager;                                                // GameManager에 저장된 스크립트 호출
     private EnemyManager enemyManager;
 
     private Transform    enemyTransform;                                            // Enemy가 가진 Transform Component 호출
@@ -23,6 +23,7 @@ public class NavEnemyAI : MonoBehaviour
 
     private int          index;
     private int          counter = 0;
+    private int enemyCounter;
 
     private void Awake()
     {
@@ -81,7 +82,6 @@ public class NavEnemyAI : MonoBehaviour
             animator.SetTrigger("Die");
             GetComponent<CapsuleCollider>().enabled = false;
             counter = 0;
-            enemyManager.ProcessingEnemyCount();
         }
     }
 }

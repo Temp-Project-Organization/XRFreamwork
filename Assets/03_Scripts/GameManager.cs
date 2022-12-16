@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int next = 0;
     [SerializeField] private int maxEnemy = 2;
     [HideInInspector] public int enemyList = 0;
-    private void Start()
+
+    private void Awake()
     {
         points = GameObject.Find("SpawnPoint_Gruops").GetComponentsInChildren<Transform>();
 
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(this.CreateEnemy());
         }
     }
+
     private IEnumerator CreateEnemy()
     {
         // 현재 생성된 적 캐릭터의 개수 산출
@@ -48,10 +50,5 @@ public class GameManager : MonoBehaviour
             }
 
         }
-    }
-
-    public int GetMaxEnemy()
-    {
-        return enemyList;
     }
 }

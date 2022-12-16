@@ -6,7 +6,8 @@ public class EnemyManager : MonoBehaviour
 {
     public GameManager gameManager;
     public static EnemyManager instance = null;
-    public int count;
+
+    [HideInInspector] public int count;
 
     private void Awake()
     {
@@ -34,14 +35,5 @@ public class EnemyManager : MonoBehaviour
 
             return instance;
         }
-    }
-
-    public void ProcessingEnemyCount()
-    {
-        gameManager = GetComponent<GameManager>();
-
-        count = gameManager.GetMaxEnemy();
-
-        count--;
     }
 }
